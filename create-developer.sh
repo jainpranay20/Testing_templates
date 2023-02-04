@@ -1,70 +1,69 @@
 #!/bin/bash
 
 echo "Enter Feature Identifier (5 alphanumeric characters only): "
-read fi
+read feature_identifier
 
-while [[ ! "$fi" =~ ^[a-zA-Z0-9]{5}$ ]]; do
-  echo "Invalid input. Enter field fi (5 alphanumeric characters only): "
-  read fi
+while [[ ! "$feature_identifier" =~ ^[a-zA-Z0-9]{5}$ ]]; do
+  echo "Invalid input. Enter feature_identifier (5 alphanumeric characters only): "
+  read feature_identifier
 done
 
 echo "Enter Mock UI Link (URL only): "
-read ui
+read ui_link
 
-while [[ ! "$ui" =~ ^https://www.[a-zA-Z0-9]+\.[a-zA-Z0-9]+ ]]; do
-  echo "Invalid input. Enter field ui (URL only): "
-  read ui
+while [[ ! "$ui_link" =~ ^https://www.[a-zA-Z0-9]+\.[a-zA-Z0-9]+ ]]; do
+  echo "Invalid input. Enter UI (URL only): "
+  read ui_link
 done
 
 echo "Enter Customer Property (8 digit number only): "
-read cp
+read customer_property
 
-while [[ ! "$cp" =~ ^[0-9]{8}$ ]]; do
-  echo "Invalid input. Enter field cp (8 digit number only): "
-  read cp
+while [[ ! "$customer_property" =~ ^[0-9]{8}$ ]]; do
+  echo "Invalid input. Enter cp (8 digit number only): "
+  read customer_property
 done
 
 echo "Enter Type 1 for workflow and 2 for feature : "
-read ty
+read type
 
 # Check if TY is either "workflow" or "feature"
-if [ "$ty" == "1" ]; then
+if [ "$type" == "1" ]; then
     choice="workflow"
-elif [ "$ty" == "2" ]; then
+elif [ "$type" == "2" ]; then
     choice="feature"
 else
-  echo "TY is invalid. It must be either 'workflow' or 'feature'."
+  echo "Type is invalid. It must be either 'workflow' or 'feature'."
   exit 1
 fi
 
 
 echo "Enter Release Version (numbers only): "
-read rv
+read version
 
 echo "Enter Portal Menu (home, security, devices, users): "
-read pm
+read portal_menu
 
-while [[ "$pm" != "home" && "$pm" != "security" && "$pm" != "devices" && "$pm" != "users" ]]; do
-  echo "Invalid input. Enter field pm (h1, h2, h3, or h4 only): "
-  read pm
+while [[ "$portal_menu" != "home" && "$portal_menu" != "security" && "$portal_menu" != "devices" && "$portal_menu" != "users" ]]; do
+  echo "Invalid input. Enter portal menu  "
+  read portal_menu
 done
 
 echo "Enter your heading: "
 read heading
 
 # Create a file with the name and version entered by the user
-filename="$rv-$heading-dev.json"
+filename="$version-$heading-dev.json"
 
 
 # Write the information in JSON format to the file
 
 echo "{" > "$filename"
-echo "\"fi\":\"$fi\"," >> "$filename"
-echo "\"ui\":\"$ui\"," >> "$filename"
-echo "\"cp\":\"$cp\"," >> "$filename"
-echo "\"ty\":\"$choice\"," >> "$filename"
-echo "\"rv\":\"$rv\"," >> "$filename"
-echo "\"pm\":\"$pm\"" >> "$filename"
+echo "\"feature_identifier\":\"$feature_identifier\"," >> "$filename"
+echo "\"ui_link\":\"$ui_link\"," >> "$filename"
+echo "\"customer_property\":\"$customer_property\"," >> "$filename"
+echo "\"type\":\"$choice\"," >> "$filename"
+echo "\"portal_menu\":\"$portal_menu\"" >> "$filename"
 echo "}" >> "$filename"
 
 echo "Information stored in $filename"
