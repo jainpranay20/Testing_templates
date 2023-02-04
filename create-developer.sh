@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "Enter field fi (5 alphanumeric characters only): "
+echo "Enter Feature Identifier (5 alphanumeric characters only): "
 read fi
 
 while [[ ! "$fi" =~ ^[a-zA-Z0-9]{5}$ ]]; do
@@ -8,15 +8,15 @@ while [[ ! "$fi" =~ ^[a-zA-Z0-9]{5}$ ]]; do
   read fi
 done
 
-echo "Enter field ui (URL only): "
+echo "Enter Mock UI Link (URL only): "
 read ui
 
-while [[ ! "$ui" =~ ^https?://[a-zA-Z0-9]+\.[a-zA-Z0-9]+ ]]; do
+while [[ ! "$ui" =~ ^https://www.[a-zA-Z0-9]+\.[a-zA-Z0-9]+ ]]; do
   echo "Invalid input. Enter field ui (URL only): "
   read ui
 done
 
-echo "Enter field cp (8 digit number only): "
+echo "Enter Customer Property (8 digit number only): "
 read cp
 
 while [[ ! "$cp" =~ ^[0-9]{8}$ ]]; do
@@ -24,7 +24,7 @@ while [[ ! "$cp" =~ ^[0-9]{8}$ ]]; do
   read cp
 done
 
-echo "Enter field ty (workflow or feature only): "
+echo "Enter Type 1 for workflow and 2 for feature : "
 read ty
 
 # Check if TY is either "workflow" or "feature"
@@ -38,18 +38,13 @@ else
 fi
 
 
-echo "Enter field rv (numbers only): "
+echo "Enter Release Version (numbers only): "
 read rv
 
-while [[ ! "$rv" =~ ^[0-9]+$ ]]; do
-  echo "Invalid input. Enter field rv (numbers only): "
-  read rv
-done
-
-echo "Enter field pm (h1, h2, h3, or h4 only): "
+echo "Enter Portal Menu (home, security, devices, users): "
 read pm
 
-while [[ "$pm" != "h1" && "$pm" != "h2" && "$pm" != "h3" && "$pm" != "h4" ]]; do
+while [[ "$pm" != "home" && "$pm" != "security" && "$pm" != "devices" && "$pm" != "users" ]]; do
   echo "Invalid input. Enter field pm (h1, h2, h3, or h4 only): "
   read pm
 done
