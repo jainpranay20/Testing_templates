@@ -1,0 +1,11 @@
+{
+  "version": "10.3",
+  "heading": "hello",
+  "description": "hi",
+  "artifact": "www.google.com",
+  "feature_identifier": "A1134",
+  "ui_link": "https://www.mockui.com",
+  "customer_property": "12345678",
+  "type": "feature",
+  "portal_menu": "home"
+}
