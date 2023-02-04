@@ -53,7 +53,7 @@ echo "Enter your heading: "
 read heading
 
 # Create a file with the name and version entered by the user
-filename="$rv-$heading.json"
+filename="$rv-$heading-dev.json"
 
 
 # Write the information in JSON format to the file
