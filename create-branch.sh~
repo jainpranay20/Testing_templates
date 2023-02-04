@@ -13,7 +13,7 @@ echo "Enter your artifact URL: "
 read artifact
 
 # Create a file with the name and version entered by the user
-filename="$version-$heading.json"
+filename="$version-$heading-cw.json"
 
 # Write the information in JSON format to the file
 echo "{" > "$filename"
