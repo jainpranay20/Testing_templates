@@ -1,13 +1,21 @@
 #!/bin/bash
 
-# Prompt the user for their name
-echo "Enter your name:"
+echo "Enter your name: "
 read name
 
-# Create a new branch based on the "content-writers" branch
-branch_name="content-writer-$name"
-git checkout -b $branch_name origin/content-writers
+echo "Enter your heading: "
+read heading
 
-# Confirm the new branch was created
-echo "New branch '$branch_name' created successfully!"
+echo "Enter your description: "
+read description
+
+# Create a file with the name entered by the user
+filename="$name.txt"
+
+# Write the information to the file
+echo "Name: $name" > "$filename"
+echo "Heading: $heading" >> "$filename"
+echo "Description: $description" >> "$filename"
+
+echo "Information stored in $filename"
 
