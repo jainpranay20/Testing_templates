@@ -1,7 +1,7 @@
 #!/bin/bash
 
-echo "Enter your name: "
-read name
+echo "Enter the version of your file: "
+read version
 
 echo "Enter your heading: "
 read heading
@@ -9,13 +9,19 @@ read heading
 echo "Enter your description: "
 read description
 
-# Create a file with the name entered by the user
-filename="$name.txt"
+echo "Enter your artifact URL: "
+read artifact
 
-# Write the information to the file
-echo "Name: $name" > "$filename"
-echo "Heading: $heading" >> "$filename"
-echo "Description: $description" >> "$filename"
+# Create a file with the name and version entered by the user
+filename="$version-$heading.json"
+
+# Write the information in JSON format to the file
+echo "{" > "$filename"
+echo "\"version\":\"$version\"," >> "$filename"
+echo "\"heading\":\"$heading\"," >> "$filename"
+echo "\"description\":\"$description\"," >> "$filename"
+echo "\"artifact\":\"$artifact\"" >> "$filename"
+echo "}" >> "$filename"
 
 echo "Information stored in $filename"
 
